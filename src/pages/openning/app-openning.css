@@ -1,0 +1,70 @@
+.app-opening {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+.advertisement {
+  width: 90%;
+  height: 100px;
+  background-color: #b3b3b3;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+}
+
+.login-section {
+  background-color: #d3d3d3;
+  padding: 20px;
+  width: 80%;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+.mobile-input {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-bottom: 1px solid black;
+  background: transparent;
+  text-align: center;
+}
+
+.login-btn,
+.register-btn,
+.owner-register-btn {
+  background-color: purple;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.divider {
+  width: 90%;
+  border: 0.5px solid black;
+  margin: 20px auto;
+}
+
+.owner-section {
+  background-color: #d3d3d3;
+  padding: 15px;
+  width: 60%;
+  margin: 10px auto;
+  border-radius: 10px;
+}
+
+.help-link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 15px;
+}
