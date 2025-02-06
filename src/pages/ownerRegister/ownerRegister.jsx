@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import "./ownerRegister.css";
 
 const OwnerRegister = () => {
-        
-    
   const [formData, setFormData] = useState({
     salonName: "",
     registrationNumber: "",
     district: "",
     city: "",
-    hometown: "",
     address: "",
     salonType: [],
     services: [],
@@ -40,6 +36,34 @@ const OwnerRegister = () => {
     "Wig Styling and Maintenance",
   ];
 
+  const cityOptions = {
+    "Ampara District": ["Akkaraipattu", "Ampara City", "Kalmunai", "Pottuvil", "Sainthamaruthu", "Sammanthurai", "Thirukkovil", "Uhana"],
+    "Anuradhapura District": ["Anuradhapura City", "Eppawala", "Galenbindunuwewa", "Galnewa", "Habarana", "Kekirawa", "Medawachchiya", "Mihintale", "Mochchiyagama", "Tambuttegama", "Talawa"],
+    "Badulla District": ["Badulla", "Bandarawela", "Diyatalawa", "Ella", "Haputale", "Mahiyanganaya", "Passara", "Welimada"],
+    "Batticaloa District": ["Batticaloa", "Chenkalady", "Eravur", "Kalkudah", "Kattankudy", "Valaichchenai", "Vakarai"],
+    "Colombo District": ["Angoda", "Athirugiriya", "Avissawella", "Battaramulla", "Boralesgamuwa", "Colombo 1", "Colombo 2", "Colombo 3", "Colombo 4", "Colombo 5", "Colombo 6", "Colombo 7", "Colombo 8", "Colombo 9", "Colombo 10", "Colombo 11", "Colombo 12", "Colombo 13", "Colombo 14", "Colombo 15", "Dehiwala", "Godagama", "Hanwella", "Homagama", "Kaduwela", "Kesbawa", "Kohuwala", "Kolonnawa", "Kotte", "Kottawa", "Maharagama", "Malabe", "Meegoda", "Moratuwa", "Mount Lavinia", "Nawala", "Nugegoda", "Padukka", "Pannipitiya", "Piliyandala", "Rajagiriya", "Rathmalana", "Thalawathugoda", "Wellampitiya"],
+    "Galle District": ["Ahangama", "Ambalangoda", "Baddegama", "Balapitiya", "Batapola", "Bentota", "Elpitiya", "Galle City", "Hikkaduwa", "Karandeniya", "Karapitiya", "Nagoda", "Unawatuna"],
+    "Gampaha District": ["Biyagama", "Dompe", "Gampaha", "Ja-Ela", "Kadawatha", "Kandana", "Katunayake", "Kelaniya", "Kiribathgoda", "Mahara", "Minuwangoda", "Mirigama", "Negombo", "Nittambuwa", "Ragama", "Veyangoda", "Wattala"],
+    "Hambantota District": ["Ambalantota", "Angunukolapelessa", "Beliatta", "Hambantota", "Okewela", "Tangalle", "Tissamaharama", "Walasmulla", "Weeraketiya"],
+    "Jaffna District": ["Chavakachcheri", "Jaffna", "Karainagar", "Kopay", "Maruthnkerny", "Nallur", "Point Pedro", "Tellippalai", "Uduvil"],
+    "Kalutara District": ["Aluthgama", "Bandaragama", "Beruwala", "Bulathsinhala", "Dodangoda", "Horana", "Ingiriya", "Kalutara", "Matugama", "Millaniya", "Palindanuwara", "Panadura", "Walallavita"],
+    "Kandy District": ["Akurana", "Ampitiya", "Digana", "Galagedara", "Gelioya", "Gampola", "Kadugannawa", "Kandy City", "Katugastota", "Kundasale", "Madawala Bazaar", "Menikhinna", "Nawalapitiya", "Peradeniya", "Pilimathalawa", "Wattegama"],
+    "Kegalle District": ["Dehiowita", "Deraniyagala", "Galigamuwa", "Kegalle", "Mawanella", "Rambukkana", "Ruwanwella", "Warakapola", "Yatiyantota"],
+    "Kilinochchi District": ["Kandavalai", "Kilinochchi", "Pallai", "Paranthan", "Poonakary"],
+    "Kurunegala District": ["Alawwa", "Bingiriya", "Kuliyapitiya", "Kurunegala", "Mawathagama", "Narammala", "Panduwasnuwara", "Polgahawela", "Wariyapola"],
+    "Mannar District": ["Adampan", "Madhu", "Mannar", "Murunkan", "Nanattan"],
+    "Matale District": ["Dambulla", "Galewela", "Matale", "Naula", "Palapathwela", "Rattota", "Sigiriya", "Ukuwela", "Yatawatta"],
+    "Matara District": ["Akuressa", "Dikwella", "Hakmana", "Kamburupitiya", "Kirinda", "Malimbada", "Matara", "Thihagoda", "Weligama"],
+    "Monaragala District": ["Bibile", "Buttala", "Katharagama", "Monaragala", "Siyambalanduwa", "Thanamalvila", "Wellawaya"],
+    "Mullaitivu District": ["Maritimepattu", "Mullaitivu", "Oddusuddan", "Puthukkudiyiruppu", "Thunukkai"],
+    "Nuwara Eliya District": ["Agarapathana", "Ambagamuwa", "Ginigathena", "Hanguranketha", "Hatton", "Kotagala", "Lindula", "Maskeliya", "Nuwara Eliya", "Talawakelle"],
+    "Polonnaruwa District": ["Dimbulagala", "Hingurakgoda", "Kaduruwela", "Lankapura", "Medirigiriya", "Polonnaruwa", "Welikanda"],
+    "Puttalam District": ["Anamaduwa", "Arachchikattuwa", "Chilaw", "Dankotuwa", "Kalpitiya", "Nattandiya", "Puttalam", "Wennappuwa"],
+    "Ratnapura District": ["Balangoda", "Eheliyagoda", "Embilipitiya", "Godakawela", "Kahawatta", "Kuruwita", "Pelmadulla", "Ratnapura"],
+    "Trincomalee District": ["Gomarankadawala", "Kantale", "Kinniya", "Muttur", "Seruwila", "Thampalakamam", "Trincomalee"],
+    "Vavuniya District": ["Cheddikulam", "Omanthai", "Poovarasankulam", "Vavuniya"]
+  };
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -51,7 +75,11 @@ const OwnerRegister = () => {
           : prev[name].filter((item) => item !== value),
       }));
     } else {
-      setFormData({ ...formData, [name]: value });
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+        ...(name === "district" && { city: "" }), // Reset city when district changes
+      }));
     }
   };
 
@@ -81,22 +109,26 @@ const OwnerRegister = () => {
           onChange={handleChange}
         />
 
+        {/* Location Selection */}
         <div className="location-section">
           <label>Location</label>
           <select name="district" value={formData.district} onChange={handleChange}>
-            <option value="">District</option>
-            <option value="district1">District 1</option>
-            <option value="district2">District 2</option>
+            <option value="">Select District</option>
+            {Object.keys(cityOptions).map((district) => (
+              <option key={district} value={district}>
+                {district}
+              </option>
+            ))}
           </select>
-          <select name="city" value={formData.city} onChange={handleChange}>
-            <option value="">City</option>
-            <option value="city1">City 1</option>
-            <option value="city2">City 2</option>
-          </select>
-          <select name="hometown" value={formData.hometown} onChange={handleChange}>
-            <option value="">HomeTown</option>
-            <option value="hometown1">HomeTown 1</option>
-            <option value="hometown2">HomeTown 2</option>
+
+          <select name="city" value={formData.city} onChange={handleChange} disabled={!formData.district}>
+            <option value="">Select City</option>
+            {formData.district &&
+              cityOptions[formData.district].map((city, index) => (
+                <option key={index} value={city}>
+                  {city}
+                </option>
+              ))}
           </select>
         </div>
 
